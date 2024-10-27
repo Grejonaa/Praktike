@@ -51,7 +51,43 @@ themeToggleBtn.addEventListener('click', function () {
     }
 });
 //Open/Close search form popup
+const formOpenBtn=selectElement("#search-icon");
+const formCloseBtn=selectElement("#form-close-btn");
+const searchFormContainer=selectElement("#search-form-container");
 
+formOpenBtn.addEventListener('click', () => searchFormContainer.classList.add('activated'));
+formCloseBtn.addEventListener('click', () => searchFormContainer.classList.remove('activated'));
+// -- Close the search form on ESC keypress
+window.addEventListener('keyup', (event) => {
+    if(event.key === 'Escape') searchFormContainer.classList.remove('activated');
+});
 
+//Swiper
+const swiper = new Swiper(".swiper", {
+    // How many slides to show
+    slidesPerView: 1,
+    // How much space between slides
+    spaceBetween: 20,
+    // Make the next and previous buttons work
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    // Make the pagination indicators work
+    pagination: {
+        el: '.swiper-pagination'
+    },
+    breakpoints: {
+        // 700px and up shoes 2 slides
+        700: {
+          slidesPerView: 2
+        },
+        // 1200px and up shoes 3 slides
+        1200: {
+            slidesPerView: 3
+        }
+    }   
+
+});
 
 
